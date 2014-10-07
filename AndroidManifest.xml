@@ -14,7 +14,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activities.AddAlarm"/>
-        <activity android:name=".activities.AddAlarmActivity"/>
+        <activity android:name=".activities.AddAlarmActivity"
+                  android:theme="@android:style/Theme.Light.NoTitleBar"/>
     </application>
 </manifest>
