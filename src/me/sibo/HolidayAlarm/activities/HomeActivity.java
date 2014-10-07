@@ -1,12 +1,10 @@
 package me.sibo.HolidayAlarm.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.*;
 import me.sibo.HolidayAlarm.R;
 import me.sibo.HolidayAlarm.adapters.SeparatedListAdapter;
 
@@ -19,6 +17,7 @@ public class HomeActivity extends Activity {
     private SeparatedListAdapter adapter;
 
     private ListView alarmListView;
+    private ImageButton addAlarmBtn;
 
     /**
      * Called when the activity is first created.
@@ -28,7 +27,7 @@ public class HomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        //create the listview adapter
+        //create the list view adapter
         adapter = new SeparatedListAdapter(this);
         ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this, R.layout.list_item, notes);
 
@@ -44,6 +43,14 @@ public class HomeActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = (String) adapter.getItem(position);
                 Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
+            }
+        });
+        addAlarmBtn = (ImageButton)this.findViewById(R.id.ib_add_alarm);
+        addAlarmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, AddAlarmActivity.class);
+                HomeActivity.this.startActivity(intent);
             }
         });
     }
